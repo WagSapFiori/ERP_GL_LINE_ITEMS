@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zfigllineitems
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: E1D
+          url: http://e1d:443
+          scp: true
+        app:
+          name: ZFIGLLINEITEMS
+          description: FI-GL Display G/L Line Items Application
+          package: ZFI_GL_FIORI
+          transport: E1DK907035
+        exclude:
+          - /test/
